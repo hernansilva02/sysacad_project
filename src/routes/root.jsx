@@ -33,38 +33,41 @@ export default function Root() {
  //            .catch(error => console.log(error))
 
     return (
-    <>
-        <h1>Universidad Tecnológica Nacional</h1>
-        <h1>Facultad Regional Avellaneda</h1>
+    <div>
+        <h1 className="text-center text-white font-bold text-6xl pt-2">Universidad Tecnológica Nacional</h1>
+
+        <h1 className="text-white text-center pt-6 text-3xl">Facultad Regional Avellaneda</h1>
         {val ? null : <h3>Credenciales Incorrectas</h3>}
 
-        <form onSubmit={handleSubmit(onSubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)} className="bg-gray-300 rounded flex items-center justify-center">
             <div>
-                <h2>Inicio de Sesion</h2>
+                <h2 className="text-center mt-20 mb-10 w-full text-white">Inicio de Sesion</h2>
             </div>
-            <label htmlFor="legajo">Legajo</label>
-            <div>
+                <div className="">
+                <label htmlFor="legajo" className="text-left text-xl">Legajo</label>
                 <input 
+                    className="rounded w-56 justify-center"
                     type="number" 
                     id="legajo" 
                     placeholder="Ingresa tu número de legajo" 
-                    {...register("legajo", {required: "No se ingresó ningún legajo"})}
+                    {...register("legajo", {required: "Ingresar numero de legajo"})}
                 />
-                <p>{errors.legajo?.message}</p>
+                <br/>
+                <p className="text-red-600 text-xl">{errors.legajo?.message}</p>
             </div>
             <label htmlFor="password">Contraseña</label>
             <div>
                 <input 
+                    className="rounded"
                     type="text" 
                     id="password" 
                     placeholder="Ingresa tu contraseña"
-                    {...register("password", {required: "No se ingresó ninguna contraseña"})}
+                    {...register("password", {required: "Una contraseña es requerida"})}
                 />
-                <p>{errors.password?.message}</p>
+                <p className="text-red-600 text-xl">{errors.password?.message}</p>
             </div>
             <button type="submit">Ingresar</button>
         </form>
-    </>
+    </div>
     );
-    
 }
